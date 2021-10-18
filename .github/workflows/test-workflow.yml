@@ -15,5 +15,6 @@ jobs:
     runs-on: windows-latest
     steps: 
     - name: Run test1
+      uses: actions/checkout@v2
     - run: echo "This job tests something"
   
