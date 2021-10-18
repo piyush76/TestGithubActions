@@ -1,19 +1,17 @@
-name: test-workflow
+name: Issue assignment
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-     branches: [ main ]
-     
+    issues:
+        types: [opened]
+
 jobs:
-  build:
-    
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run build command
-    - run: echo "Hello $GITHUB_ACTOR!"
+    auto-assign:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Auto-assign issue'
+              uses: pozil/auto-assign-issue@v1.0.3
+              with:
+                  repo-token: ${{ secrets.GITHUB_TOKEN }}
+                  assignees: testesdapri
     
   
